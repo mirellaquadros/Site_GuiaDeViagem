@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nômade — Mapa de Destinos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">Nôm<span>a</span>de</a>
+  <span class="nav-hint">Clique em um ponto no mapa</span>
+</nav>
+
+<!-- PAINÉIS DE DESTINOS -->
+<div class="panel" id="franca"> ... </div>
+<div class="panel" id="japao"> ... </div>
+<div class="panel" id="brasil"> ... </div>
+<div class="panel" id="egito"> ... </div>
+
+<!-- MAPA -->
+<div class="map-wrapper">
+  <div class="map-container">
+    <svg id="map-svg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <!-- Continentes e pins -->
+    </svg>
+  </div>
+</div>
+
+<!-- LEGENDA -->
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-dot"></div>
+    <span>Destino disponível</span>
+  </div>
+</div>
+
+</body>
+</html>
