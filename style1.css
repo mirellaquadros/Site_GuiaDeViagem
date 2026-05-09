@@ -1,81 +1,334 @@
-/* ------- style.css -------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Josefin+Sans:wght@100;200;300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+:root {
+    --fundo:      #150f08;
+    --mapa:       #231a10;
+    --mapa-borda: #454341;
+    --hover:      #332618;
+    --laranja:    #E8602C;
+    --laranja-glow: rgba(232, 96, 44, 0.35);
+    --texto:      #c9b99a;
+    --texto-claro:#f0e6d6;
+    --texto-muted:#5a4a38;
+
+}
+
 body {
-    background-color: #01171b;
+    background-color: var(--fundo);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    cursor: default;
 }
-svg path {
-    fill: #00394f;
-    stroke: #eee;
-    stroke-width: .25;
+
+/* --------------- NAVBAR --------------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 36px;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(21,15,8,0.95) 0%, transparent 100%);
 }
-svg path:hover {
-    fill: #0D6284;
-    transition: 0.6s;
-    cursor: pointer;
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--texto-claro);
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
-svg path::after {
-    content: attr(data-nome);
-    position: absolute;
-    background: #fff;
-    color: #000;
-    padding: 4px 8px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    font-size: 12px;
-    display: none;
-    white-space: nowrap;
+
+.logo span {
+    color: var(--laranja);
 }
-svg path:hover::after {
+
+.instrucao {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 100;
+    color: var(--texto-muted);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* ------------------------- MAPA ------------------------- */
+svg {
+    width: 100vw;
+    height: 100vh;
     display: block;
 }
 
-.popup {
-      display: none;
-      position: absolute;
-      top: 100px;
-      left: 50px;
-      background: white;
-      border: 1px solid black;
-      padding: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+svg path {
+    fill: var(--mapa);
+    stroke: var(--mapa-borda);
+    stroke-width: .3;
+    transition: fill 0.4s;
 }
+
+svg path:hover {
+    fill: var(--hover);
+}
+
+/* ------------------------- MARCADORES ------------------------- */
+.marcador {
+    cursor: pointer;
+}
+
+.marcador .icone-pin {
+    fill: var(--laranja);
+    filter: drop-shadow(0 0 7px var(--laranja));
+    transition: r 0.2s, filter 0.2s;
+}
+
+.marcador:hover .icone-pin {
+    filter: drop-shadow(0 0 14px var(--laranja));
+    r: 7;
+}
+
+.marcador .icone-circulo {
+    fill: var(--fundo);
+    pointer-events: none;
+}
+
+/* Onda de pulso */
+.onda {
+    fill: none;
+    stroke: var(--laranja);
+    stroke-width: 1;
+    animation: pulso-onda 2.5s ease-out infinite;
+    pointer-events: none;
+}
+
+.onda-2 {
+    fill: none;
+    stroke: var(--laranja);
+    stroke-width: 0.6;
+    animation: pulso-onda 2.5s ease-out infinite;
+    animation-delay: 0.8s;
+    pointer-events: none;
+}
+
+@keyframes pulso-onda {
+    0%   { r: 8;  opacity: 0.7; }
+    100% { r: 24; opacity: 0;   }
+}
+
+/* Delay escalonado por marcador */
+.marcador:nth-of-type(1) .onda  { animation-delay: 0s;   }
+.marcador:nth-of-type(1) .onda-2{ animation-delay: 0.8s; }
+.marcador:nth-of-type(2) .onda  { animation-delay: 0.5s; }
+.marcador:nth-of-type(2) .onda-2{ animation-delay: 1.3s; }
+.marcador:nth-of-type(3) .onda  { animation-delay: 1s;   }
+.marcador:nth-of-type(3) .onda-2{ animation-delay: 1.8s; }
+.marcador:nth-of-type(4) .onda  { animation-delay: 1.5s; }
+.marcador:nth-of-type(4) .onda-2{ animation-delay: 2.3s; }
+.marcador:nth-of-type(5) .onda  { animation-delay: 0.3s; }
+.marcador:nth-of-type(5) .onda-2{ animation-delay: 1.1s; }
+
+/* ------------------------- OVERLAY ------------------------- */
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 7, 3, 0.75);
+    backdrop-filter: blur(3px);
+    z-index: 200;
+}
+
+.overlay:target {
+    display: block;
+}
+
+/* ------------------------- POPUP ------------------------- */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    background: #1c1409;
+    border: 1px solid #2e2318;
+    z-index: 300;
+    overflow: hidden;
+    animation: entrar 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .popup:target {
     display: block;
 }
-.popup::after{
-    content: attr(data-tolltips);
+
+@keyframes entrar {
+    from { opacity: 0; transform: translate(-50%, -46%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
 }
 
-svg path.pais{
-    fill: #00394f;
+/* Foto do destino */
+.popup-foto {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.8) sepia(0.2);
 }
-svg path.pais:hover{
-    fill: #840d0d;
-    transition: 0.6s;
+
+/* Fallback de cor quando não há imagem */
+.popup-foto-placeholder {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    background: linear-gradient(135deg, #1c1409 0%, #2e1f0a 100%);
+}
+
+.popup-corpo {
+    padding: 28px 30px 24px;
+}
+
+.popup-regiao {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--laranja);
+    margin-bottom: 8px;
+}
+
+.popup-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--texto-claro);
+    line-height: 1;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+.popup-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texto);
+    line-height: 1.7;
+    margin-bottom: 22px;
+    border-left: 1px solid var(--laranja);
+    padding-left: 14px;
+}
+
+.popup-preco-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    margin-bottom: 4px;
+}
+
+.popup-preco {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--texto-claro);
+    margin-bottom: 24px;
+}
+
+.popup-preco span {
+    font-size: 14px;
+    color: var(--texto-muted);
+    font-weight: 300;
+}
+
+.popup-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-pacotes {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--fundo);
+    background: var(--texto-claro);
+    border: none;
+    padding: 12px 24px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
-.legend-item{
-    color: rgb(175, 188, 183);
+
+.btn-fechar {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-.mapa {
-  position: relative;
+.btn-fechar:hover {
+    color: var(--texto);
 }
 
-.pais:hover::after {
-  content: attr(data-nome);
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
-  color: #000;
-  padding: 4px 8px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
+/* Linha decorativa no topo do popup */
+.popup::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(to right, var(--laranja), transparent);
 }
+
+/* ------------------------- LEGENDA ------------------------- */
+.legend {
+    position: fixed;
+    bottom: 28px;
+    left: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 50;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 200;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--laranja);
+    box-shadow: 0 0 8px var(--laranja-glow);
+    flex-shrink: 0;
+}   
