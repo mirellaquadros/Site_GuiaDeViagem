@@ -58,7 +58,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 10px;
     font-weight: 100;
-    color: var(--texto-muted);
+    color: #7A7570;
     letter-spacing: 4px;
     text-transform: uppercase;
 }
@@ -200,63 +200,73 @@ svg path:hover {
     margin-bottom: 0.25rem;
 }
 
-.popup-desc {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 15px;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--texto);
-    line-height: 1.7;
-    margin-bottom: 22px;
-    border-left: 1px solid var(--laranja);
-    padding-left: 14px;
+.popup-subtitulo{
+    font-size: 0.85rem;
+    color:var(--texto)
 }
 
-.popup-escolher-cidade {
-    font-family: 'Josefin Sans', sans-serif;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+.popup-secao-titulo{
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5a4a38;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
 }
 
-.popup-preco {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--texto-claro);
-    margin-bottom: 24px;
+.lista-cidade{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
-.popup-preco span {
-    font-size: 14px;
-    color: var(--texto-muted);
-    font-weight: 300;
-}
-
-.popup-acoes {
+.link-cidade{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--mapa-borda);
+    border-radius: 12px;
+    background: var(--hover);
+    text-decoration: none;
+    color: #12100E;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 
-.btn-estados {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--mapa-borda);
-  border-radius: 12px;
-  background: rgb(222, 181, 164);
-  text-decoration: none;
-  color: #12100E;
-  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+.link-cidade:hover{
+    border-color:#934221;
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(196, 82, 42, 0.35);
 }
 
-.btn-estados:hover {
-    background: var(--laranja);
-    color: var(--texto-claro);
-    box-shadow: 0 0 10px var(--laranja-glow);
+.cidade-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.cidade-nome {
+    font-family: 'Josefins Sans', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #b88b5e; 
+}
+
+.popup-cidade-desc{
+    font-size: 0.78rem;
+    color:#5a3817;
+}
+
+.cidade-setinha{
+    font-size: 0.9rem;
+    color: #934221;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.link-cidade:hover .cidade-setinha {
+    opacity: 1;
 }
 
 .btn-fechar {
@@ -271,7 +281,7 @@ svg path:hover {
 }
 
 .btn-fechar:hover {
-    color: var(--texto);
+    color: #634e3a;
 }
 
 /* Linha decorativa no topo do popup */
@@ -286,22 +296,22 @@ svg path:hover {
 /* ------------------------- LEGENDA ------------------------- */
 .legend {
     position: fixed;
-    bottom: 28px;
-    left: 32px;
+    bottom: 2rem;
+    left: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    z-index: 50;
+    gap: 0.5rem;
+    z-index: 100;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.6rem;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 9px;
+    font-size: 0.72rem;
     font-weight: 200;
-    letter-spacing: 3px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--texto-muted);
 }
@@ -311,6 +321,5 @@ svg path:hover {
     height: 8px;
     border-radius: 50%;
     background: var(--laranja);
-    box-shadow: 0 0 8px var(--laranja-glow);
-    flex-shrink: 0;
+    box-shadow: 0 0 6px var(--laranja-glow);
 }   
