@@ -7,11 +7,12 @@
 }
 
 :root {
-    --fundo:      #150f08;
-    --mapa:       #231a10;
-    --mapa-borda: #454341;
-    --hover:      #332618;
-    --laranja:    #E8602C;
+    
+    --fundo:      #3b4f41;
+    --mapa:       #6f967b;
+    --mapa-borda: #3b4f41;
+    --hover:      #4d7c5b;
+    --laranja:    #996748;
     --laranja-glow: rgba(232, 96, 44, 0.35);
     --texto:      #c9b99a;
     --texto-claro:#f0e6d6;
@@ -51,7 +52,7 @@ body {
 }
 
 .logo span {
-    color: var(--laranja);
+    color: #bed1bd;
 }
 
 .instrucao {
@@ -97,10 +98,6 @@ svg path:hover {
     r: 7;
 }
 
-.marcador .icone-circulo {
-    fill: var(--fundo);
-    pointer-events: none;
-}
 
 /* Onda de pulso */
 .onda {
@@ -255,7 +252,7 @@ svg path:hover {
 
 .popup-cidade-desc{
     font-size: 0.78rem;
-    color:#5a3817;
+    color:#715a43;
 }
 
 .cidade-setinha{
