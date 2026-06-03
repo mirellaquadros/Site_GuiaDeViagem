@@ -7,7 +7,7 @@
 }
 
 :root {
-    --fundo:      #3b4f41;
+    --fundo:      #29372d;
     --mapa:       #6f967b;
     --mapa-borda: #3b4f41;
     --hover:      #4d7c5b;
@@ -170,9 +170,8 @@ svg path:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 360px;
-    background: var(--fundo);
-    border: 1px solid rgb(0, 64, 0);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Sombra para dar profundidade */
+    background: rgb(48, 51, 49);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
     z-index: 300;
     overflow: hidden;
     animation: entrar 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -183,7 +182,7 @@ svg path:hover {
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: var(--hover);
+  background: rgb(48, 56, 51);
   z-index: 10;
 }
 
@@ -259,9 +258,9 @@ svg path:hover {
     color: var(--verde-glow);
 }
 
-.cidade-setinha{
+.cidade_setinha{
     font-size: 0.9rem;
-    color: var(--verde);
+    color: white;
     opacity: 0;
     transition: opacity 0.2s;
 }
@@ -276,14 +275,14 @@ svg path:hover {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #414541;
+  color: rgb(156, 184, 169);
   text-decoration: none;
   margin-bottom: 1rem;
   transition: color 0.2s;
 }
 
 .btn-fechar:hover {
-    color: #3a633d;
+    color: #c3e5c5;
 }
 
 /* Linha decorativa no topo do popup */
