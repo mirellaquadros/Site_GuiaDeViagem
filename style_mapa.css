@@ -9,10 +9,10 @@
 :root {
     --fundo:      #3b4f41;
     --mapa:       #6f967b;
-    --mapa-borda: #454341;
+    --mapa-borda: #3b4f41;
     --hover:      #4d7c5b;
-    --laranja:    #996748;
-    --laranja-glow: rgba(232, 96, 44, 0.35);
+    --verde:    #a9edc1;
+    --verde-glow: rgba(169, 237, 193, 0.35);
     --texto:      #c9b99a;
     --texto-claro:#f0e6d6;
     --texto-muted:#5a4a38;
@@ -87,13 +87,13 @@ svg path:hover {
 }
 
 .marcador .icone-pin {
-    fill: var(--laranja);
-    filter: drop-shadow(0 0 7px var(--laranja));
+    fill: var(--verde);
+    filter: drop-shadow(0 0 7px var(--verde));
     transition: r 0.2s, filter 0.2s;
 }
 
 .marcador:hover .icone-pin {
-    filter: drop-shadow(0 0 14px var(--laranja));
+    filter: drop-shadow(0 0 14px var(--verde));
     r: 7;
 }
 
@@ -105,7 +105,7 @@ svg path:hover {
 /* Onda de pulso */
 .onda {
     fill: none;
-    stroke: var(--laranja);
+    stroke: var(--verde);
     stroke-width: 1;
     animation: pulso-onda 2.5s ease-out infinite;
     pointer-events: none;
@@ -113,7 +113,7 @@ svg path:hover {
 
 .onda-2 {
     fill: none;
-    stroke: var(--laranja);
+    stroke: var(--verde);
     stroke-width: 0.6;
     animation: pulso-onda 2.5s ease-out infinite;
     animation-delay: 0.8s;
@@ -236,9 +236,9 @@ svg path:hover {
 }
 
 .link-cidade:hover{
-    border-color:#936b21;
+    border-color: var(--verde-glow);
     transform: translateX(4px);
-    box-shadow: 0 4px 16px rgba(196, 82, 42, 0.35);
+    box-shadow: 0 4px 16px var(--verde-glow);
 }
 
 .cidade-info{
@@ -251,23 +251,24 @@ svg path:hover {
     font-family: 'Josefins Sans', Georgia, serif;
     font-size: 1.05rem;
     font-weight: 400;
-    color: #b88b5e; 
+    color: var(--verde); 
 }
 
 .popup-cidade-desc{
     font-size: 0.78rem;
-    color:#5a3817;
+    color: var(--verde-glow);
 }
 
 .cidade-setinha{
     font-size: 0.9rem;
-    color: #934221;
+    color: var(--verde);
     opacity: 0;
     transition: opacity 0.2s;
 }
 
 .link-cidade:hover .cidade-setinha {
     opacity: 1;
+    color: var(--verde-glow)
 }
 
 .btn-fechar {
@@ -275,14 +276,14 @@ svg path:hover {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #454341;
+  color: #414541;
   text-decoration: none;
   margin-bottom: 1rem;
   transition: color 0.2s;
 }
 
 .btn-fechar:hover {
-    color: #634e3a;
+    color: #3a633d;
 }
 
 /* Linha decorativa no topo do popup */
@@ -290,7 +291,7 @@ svg path:hover {
     content: '';
     display: block;
     height: 2px;
-    background: linear-gradient(to right, var(--laranja), transparent);
+    background: linear-gradient(to right, var(--verde), transparent);
 }
 
 
@@ -321,6 +322,6 @@ svg path:hover {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--laranja);
-    box-shadow: 0 0 6px var(--laranja-glow);
+    background: var(--verde);
+    box-shadow: 0 0 6px var(--verde-glow);
 }
